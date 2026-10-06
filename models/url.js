@@ -10,6 +10,16 @@ const urlSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user',
+        required: true,
+        index: true,
+    },
+    expiresAt: {
+        type: Date,
+        index: { expires: 0 },
+    },
     visitHistory: [{ timestamp: { type: Number } }],
 },
 {
